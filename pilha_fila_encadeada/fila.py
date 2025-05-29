@@ -37,12 +37,10 @@ class Fila:
     def __str__(self):
         if self.__inicio == None:
             return 'Fila vazia.'
-        else:    
-            dados = ''
-            p = self.__inicio
-
-            while p != None:
-                dados = dados + ' ' + p.dado
-                p = p.prox
             
-            return dados
+        dados = ''
+        p = self.__inicio
+        while p != None:
+            dados = dados + ' ' + p.dado
+            p = p.prox       
+        return dados

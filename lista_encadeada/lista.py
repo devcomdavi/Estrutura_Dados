@@ -17,6 +17,41 @@ class ListaEncadeada:
             p = p.prox
         return cont
 
+    def buscar_valor(self, dado):
+        if self.vazia():
+            return None
+        p = self.__inicio
+        i = 0
+        while p is not None:
+            if p.dado == dado:
+                return i
+            i += 1
+            p = p.prox
+        return None
+
+    def buscar_posicao(self, pos):
+        if self.vazia():
+            return None
+        if pos >= self.tamanho():
+            return None
+        p = self.__inicio
+        for i in range(pos):
+            p = p.prox
+        return p.dado
+    
+    def buscar_ocorrencias(self, dado):
+        if self.vazia():
+            return None
+        p = self.__inicio
+        cont = 0
+        while p.prox != None:
+            if p.dado == dado:
+                cont += 1
+            p = p.prox
+        if cont == 0:
+            return None
+        return cont
+
     def inserir_inicio(self, dado):
         novo = No(dado)
         novo.prox = self.__inicio
@@ -114,6 +149,8 @@ print(f"Tamanho da lista: {minha_lista.tamanho()}")
 # Método: inserir_inicio()
 minha_lista.inserir_inicio(5)
 print(f"Após inserir 5 no início: {minha_lista}")
+print(minha_lista.buscar_valor(20))
+print(minha_lista.buscar_posicao(2))
 
 # Método: inserir(dado, pos)
 minha_lista.inserir(15, 1)
@@ -122,6 +159,12 @@ minha_lista.inserir(25, 4) # Tentativa de inserir em posição inválida
 print(f"Após tentativa de inserir 25 na posição 4: {minha_lista}")
 minha_lista.inserir(0, 0)
 print(f"Após inserir 0 na posição 0: {minha_lista}")
+minha_lista.inserir(0, 0)
+print(f"Após inserir 0 na posição 0: {minha_lista}")
+minha_lista.inserir(0, 4)
+print(f"Após inserir 0 na posição 4: {minha_lista}")
+print(f'ocorrencias do 0: {minha_lista.buscar_ocorrencias(0)}')
+
 
 # Método: remover_incio()
 minha_lista.remover_incio()
